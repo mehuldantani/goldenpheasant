@@ -1,0 +1,32 @@
+<div class="container">
+    <div
+      *ngIf="isLoading; else Content"
+      class="d-flex justify-content-center align-items-center min-vh-100"
+    >
+      <div
+        class="spinner-border text-primary"
+        style="width: 3rem; height: 3rem;"
+        role="status"
+      ></div>
+    <span class="text-primary ml-2 font-weight-bold">Loading...</span>
+    </div>
+  
+    <ng-template #Content>
+      <div class="row m-5">
+        <div class="col col-md-7">
+          <!-- will render list of post here -->
+          <p class="text-muted text-uppercase text-center font-weight-bold">Global Feed</p>
+          <div *ngFor ="let post of posts">
+              <app-posts [post] ="post"></app-posts>
+          </div>
+        </div>
+        <div class="col col-md-5 ">
+          <p class="text-muted text-uppercase text-center font-weight-bold">List of Users</p>
+          <div *ngFor ="let user of users">
+            <app-explore [user] ="user"></app-explore>
+        </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  
